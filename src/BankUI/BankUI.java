@@ -2,6 +2,8 @@ package BankUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class BankUI {
     JFrame frame=new JFrame("LOGIN PAGE");
@@ -10,7 +12,7 @@ public class BankUI {
     JLabel text2=new JLabel("Code-Soarers Bank");
     JLabel text3=new JLabel("Enter Pin To Continue:");
    JPasswordField textField1=new JPasswordField();
-   JPanel panel1=new JPanel();
+
 
     JButton button1=new JButton("Continue");
 
@@ -35,10 +37,10 @@ public class BankUI {
 
         button1.setFont(new Font("Gill sans", Font.PLAIN,18));
         button1.setForeground(new Color(94,94,94));
-//        button1.setBackground(new Color(0,118,186));
-//
+
 
         textField1.setHorizontalAlignment(JPasswordField.CENTER);
+
 
         GridBagConstraints gridBagConstraints=new GridBagConstraints();
         gridBagConstraints.gridx=0;
@@ -91,7 +93,30 @@ public class BankUI {
         frame.add(button1,gridBagConstraints6);
 
         frame.setVisible(true);
+
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loginHandling();
+            }
+        });
     }
+
+    public void loginHandling(){
+        char[] password=textField1.getPassword();
+        String convertedPassword=new String(password);
+        int result=Integer.parseInt(convertedPassword);
+
+        if(result==5555){
+            System.out.println("IT IS WORKING");
+        }
+        else{
+            textField1.setBorder(BorderFactory.createLineBorder(Color.red));
+            text3.setText(" Enter the Right Pin: ");
+        }
+    }
+
+
 
 
 
