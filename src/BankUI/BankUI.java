@@ -113,7 +113,7 @@ public class BankUI {
             try{
                 int result=Integer.parseInt(convertedPassword);
                 if(result==5555){
-                    System.out.println("IT IS WORKING");
+                    mainUI2();
                 }
                 else{
 
@@ -129,6 +129,63 @@ public class BankUI {
 
         }
     }
+
+    JFrame frame2 = new JFrame("BANK HOMEPAGE");
+    JLabel text4 = new JLabel("     WELCOME USER!!");
+    JLabel text5 = new JLabel("Choose an Account Type");
+    JButton button2 = new JButton("Savings\nAccount");
+    JButton button3 = new JButton("Current\nAccount");
+
+    public void mainUI2() {
+        frame2.setSize(750, 450);
+        frame2.getContentPane().setBackground(new Color(0, 162, 255));
+        frame2.setLocationRelativeTo(null);
+        frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame2.setLayout(new GridBagLayout());
+
+        text4.setFont(new Font("Gill sans", Font.BOLD, 24));
+        text4.setForeground(Color.white);
+
+        text5.setFont(new Font("Gill sans", Font.BOLD, 24));
+        text5.setForeground(new Color(94, 94, 94));
+
+        // Create a panel for the buttons and set a FlowLayout with top alignment
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setBackground(new Color(0,162,255));
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 30, 30));
+        buttonPanel.add(button2);
+        buttonPanel.add(button3);
+
+        // Create a panel for the labels and set a BoxLayout with top alignment
+        JPanel labelPanel = new JPanel();
+        labelPanel.setBackground(new Color(0,162,255));
+        labelPanel.setLayout(new BoxLayout(labelPanel, BoxLayout.Y_AXIS));
+        labelPanel.add(Box.createVerticalGlue());
+        labelPanel.add(text4);
+        labelPanel.add(text5);
+
+        // Set preferred size for buttons
+        button2.setPreferredSize(new Dimension(300, 100));
+        button3.setPreferredSize(new Dimension(300, 100));
+
+
+
+
+        // Add the label panel and button panel to the frame using GridBagLayout
+        GridBagConstraints gridBagConstraints = new GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = GridBagConstraints.CENTER;
+        gridBagConstraints.insets = new Insets(10, 0, 10, 0);
+        frame2.add(labelPanel, gridBagConstraints);
+
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new Insets(10, 0, 15, 0);
+        frame2.add(buttonPanel, gridBagConstraints);
+
+        frame2.setVisible(true);
+    }
+
 
 
 
