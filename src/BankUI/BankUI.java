@@ -104,15 +104,29 @@ public class BankUI {
 
     public void loginHandling(){
         char[] password=textField1.getPassword();
-        String convertedPassword=new String(password);
-        int result=Integer.parseInt(convertedPassword);
-
-        if(result==5555){
-            System.out.println("IT IS WORKING");
+        if (password == null|password.length == 0) {
+            textField1.setBorder(BorderFactory.createLineBorder(Color.red));
+            text3.setText("Enter Valid Pin: ");
         }
         else{
-            textField1.setBorder(BorderFactory.createLineBorder(Color.red));
-            text3.setText(" Enter the Right Pin: ");
+            String convertedPassword=new String(password);
+            try{
+                int result=Integer.parseInt(convertedPassword);
+                if(result==5555){
+                    System.out.println("IT IS WORKING");
+                }
+                else{
+
+                    textField1.setBorder(BorderFactory.createLineBorder(Color.red));
+                    text3.setText(" Enter the Right Pin: ");
+                }
+            }catch (NumberFormatException numberFormatException){
+                textField1.setBorder(BorderFactory.createLineBorder(Color.red));
+                text3.setText("Invalid Pin: ");
+            }
+
+
+
         }
     }
 
