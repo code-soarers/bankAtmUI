@@ -1,3 +1,5 @@
+package BankUI;
+
 public class Account {
     int accountBalance=50000;
     public boolean withdrawal(int amount){
