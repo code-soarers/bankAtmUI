@@ -366,12 +366,16 @@ public class BankUI {
         JLabel amountEntered = new JLabel(""+ account.accountBalance);
         JPanel amountPane = new JPanel();
 
+        JLabel withdrawOptionTxt = new JLabel("Would you like to do Something else ?");
+        JButton withdrawYes = new JButton("Yes");
+        JButton withdrawNO = new JButton("NO");
+
 
 
         public void withdrawframe(int updateWithdraw, int withdrawnAmount){
             withdrawnFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             withdrawnFrame.setLayout( new GridBagLayout());
-            withdrawnFrame.setSize(600, 500);
+            withdrawnFrame.setSize(1000, 500);
             withdrawnFrame.setLocationRelativeTo(null);
             withdrawnFrame.getContentPane().setBackground(new Color(0, 162, 255));
 
@@ -386,6 +390,9 @@ public class BankUI {
 
             withdrawnText.setFont(new Font("Gill sans", Font.BOLD, 24));
             withdrawnText.setForeground(new Color(94,94,94,94));
+
+            withdrawOptionTxt.setFont(new Font("Gill sans", Font.BOLD, 24));
+            withdrawOptionTxt.setForeground(new Color(94,94,94,94));
 
 
 
@@ -416,15 +423,35 @@ public class BankUI {
             gridBagConstraints2.gridwidth =3;
             withdrawnFrame.add(amountPane, gridBagConstraints2);
 
-//            GridBagConstraints gridBagConstraints3 = new GridBagConstraints();
-//            gridBagConstraints3.gridx = 0;
-//            gridBagConstraints3.gridy =3;
-//            gridBagConstraints3.ipadx = 270;
-//            gridBagConstraints3.ipady = 60;
-//            gridBagConstraints3.anchor = GridBagConstraints.NORTHEAST;
-//            gridBagConstraints3.insets = new Insets(10, 0,10,0);
-//            gridBagConstraints3.gridwidth =3;
-//            withdrawnFrame.add(s_withdrawButton, gridBagConstraints3);
+            GridBagConstraints gridBagConstraints3 = new GridBagConstraints();
+            gridBagConstraints3.gridx = 0;
+            gridBagConstraints3.gridy =3;
+            gridBagConstraints3.ipadx = 270;
+            gridBagConstraints3.ipady = 60;
+            gridBagConstraints3.anchor = GridBagConstraints.CENTER;
+            gridBagConstraints3.insets = new Insets(10, 40,10,0);
+            gridBagConstraints3.gridwidth =3;
+            withdrawnFrame.add(withdrawOptionTxt, gridBagConstraints3);
+
+            GridBagConstraints gridBagConstraints4 = new GridBagConstraints();
+            gridBagConstraints4.gridx = 0;
+            gridBagConstraints4.gridy =4;
+            gridBagConstraints4.ipadx = 170;
+            gridBagConstraints4.ipady = 60;
+            gridBagConstraints4.anchor = GridBagConstraints.NORTHWEST;
+            gridBagConstraints4.insets = new Insets(10, 10,10,10);
+            gridBagConstraints4.gridwidth =3;
+            withdrawnFrame.add(withdrawYes, gridBagConstraints4);
+
+            GridBagConstraints gridBagConstraints5 = new GridBagConstraints();
+            gridBagConstraints5.gridx = 1;
+            gridBagConstraints5.gridy =4;
+            gridBagConstraints5.ipadx = 170;
+            gridBagConstraints5.ipady = 60;
+            gridBagConstraints5.anchor = GridBagConstraints.NORTHEAST;
+            gridBagConstraints5.insets = new Insets(10, 10,10,10);
+            gridBagConstraints5.gridwidth =3;
+            withdrawnFrame.add(withdrawNO, gridBagConstraints5);
 
             withdrawnFrame.setVisible(true);
 
