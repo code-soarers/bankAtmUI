@@ -199,7 +199,7 @@ public class BankUI {
 
 
 
-    JFrame saveOptionFrame = new JFrame("SAVING ACCOUNT");
+    JFrame saveOptionFrame = new JFrame("SAVING ACCOUNT HOME");
     //JLabel saveLabel = new JLabel("SAVING ACCOUNT");
     JLabel saveText = new JLabel("Click the Action to be performed:");
     JButton saveWithdrawButtton = new JButton("Withdraw");
@@ -217,7 +217,7 @@ public class BankUI {
 
 
         saveText.setFont(new Font("Gill sans", Font.BOLD, 24));
-        saveText.setForeground(Color.gray);
+        saveText.setForeground(new Color(94,94,94,94));
 
 
 
@@ -268,10 +268,85 @@ public class BankUI {
             @Override
             public void actionPerformed(ActionEvent e) {destroy_saveOptionFrame();}
         });
+
+
+        saveWithdrawButtton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {saveWithdraw();}
+        });
     }
     public void destroy_saveOptionFrame(){
         saveOptionFrame.dispose();
     }
+
+
+    JFrame s_withdrawFrame = new JFrame("SAVING ACCOUNT WITHDRAWAL");
+    Account account=new Account();
+    JLabel s_withdrawLabel = new JLabel("Total Amount in Balance =$ "+account.accountBalance);
+    JLabel s_withdrawText = new JLabel("Enter Amount To Withdraw: ");
+    JTextField s_withdrawField = new JTextField();
+    JButton s_withdrawButton = new JButton("Withdraw");
+
+
+        public void saveWithdraw() {
+            s_withdrawFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            s_withdrawFrame.setBackground(Color.BLUE);
+            s_withdrawFrame.setLayout( new GridBagLayout());
+            s_withdrawFrame.setSize(600, 500);
+            s_withdrawFrame.setLocationRelativeTo(null);
+            s_withdrawFrame.getContentPane().setBackground(new Color(0, 162, 255));
+
+
+
+            GridBagConstraints gridBagConstraints = new GridBagConstraints();
+            gridBagConstraints.gridx = 0;
+            gridBagConstraints.gridy =0;
+            gridBagConstraints.anchor = GridBagConstraints.CENTER;
+            gridBagConstraints.insets = new Insets(10, 0,10,0);
+            gridBagConstraints.gridwidth =3;
+            s_withdrawFrame.add(s_withdrawLabel, gridBagConstraints);
+
+
+            GridBagConstraints gridBagConstraints1 = new GridBagConstraints();
+            gridBagConstraints1.gridx = 0;
+            gridBagConstraints1.gridy =1;
+            gridBagConstraints1.anchor = GridBagConstraints.CENTER;
+            gridBagConstraints1.insets = new Insets(10, 0,10,0);
+            gridBagConstraints1.gridwidth =3;
+            s_withdrawFrame.add(s_withdrawText, gridBagConstraints1);
+
+            GridBagConstraints gridBagConstraints2 = new GridBagConstraints();
+            gridBagConstraints2.gridx = 0;
+            gridBagConstraints2.gridy =2;
+            gridBagConstraints2.ipadx = 270;
+            gridBagConstraints2.ipady = 60;
+            gridBagConstraints2.anchor = GridBagConstraints.CENTER;
+            gridBagConstraints2.insets = new Insets(10, 0,10,0);
+            gridBagConstraints2.gridwidth =3;
+            s_withdrawFrame.add(s_withdrawField, gridBagConstraints2);
+
+            GridBagConstraints gridBagConstraints3 = new GridBagConstraints();
+            gridBagConstraints3.gridx = 0;
+            gridBagConstraints3.gridy =3;
+            gridBagConstraints3.ipadx = 270;
+            gridBagConstraints3.ipady = 60;
+            gridBagConstraints3.anchor = GridBagConstraints.NORTHEAST;
+            gridBagConstraints3.insets = new Insets(10, 0,10,0);
+            gridBagConstraints3.gridwidth =3;
+            s_withdrawFrame.add(s_withdrawButton, gridBagConstraints3);
+
+            s_withdrawFrame.setVisible(true);
+            s_withdrawButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    withdrawframe();
+                }
+            });
+
+        }
+        public void withdrawframe(){
+
+        }
 
 
 
