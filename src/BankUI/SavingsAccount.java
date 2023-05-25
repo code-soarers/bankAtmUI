@@ -1,17 +1,21 @@
 package BankUI;
 
 public class SavingsAccount extends Account{
+    int account_Balance = 50000;
 
-    @Override
-    public boolean withdrawal(int amount) {
+    public boolean saving_withdrawal(int amount) {
         boolean withdraw;
         if(amount>20000){
             withdraw=false;
         }
         else{
             withdraw=true;
-            accountBalance=accountBalance-amount;
+            account_Balance=account_Balance-amount;
         }
         return withdraw;
+    }
+
+    int checkBalance(){
+        return  account_Balance;
     }
 }

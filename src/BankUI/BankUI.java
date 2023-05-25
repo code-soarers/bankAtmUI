@@ -219,6 +219,8 @@ public class BankUI {
         saveText.setFont(new Font("Gill sans", Font.BOLD, 24));
         saveText.setForeground(new Color(94,94,94,94));
 
+        //saveDepositButton.setBackground(new Color(0, 0, 139, 0));
+
 
 
 
@@ -339,12 +341,92 @@ public class BankUI {
             s_withdrawButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    withdrawframe();
+                    String withdrawnString = s_withdrawField.getText();
+                    int withdrawnAmount = Integer.parseInt(withdrawnString);
+                    handleWithdraw(withdrawnAmount);
                 }
             });
 
         }
-        public void withdrawframe(){
+        public void handleWithdraw(int withdrawnAmount){
+            SavingsAccount account_s = new SavingsAccount();
+            boolean withdrawn = account_s.saving_withdrawal(withdrawnAmount);
+            if (withdrawn) {
+                int updateWithdraw = account_s.checkBalance();
+                withdrawframe(updateWithdraw, withdrawnAmount);
+            }
+        }
+
+
+
+
+        JFrame withdrawnFrame = new JFrame("Widthrawn");
+
+        JLabel withdrawnText = new JLabel("New Account Balance:");
+        JLabel amountEntered = new JLabel(""+ account.accountBalance);
+        JPanel amountPane = new JPanel();
+
+
+
+        public void withdrawframe(int updateWithdraw, int withdrawnAmount){
+            withdrawnFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            withdrawnFrame.setLayout( new GridBagLayout());
+            withdrawnFrame.setSize(600, 500);
+            withdrawnFrame.setLocationRelativeTo(null);
+            withdrawnFrame.getContentPane().setBackground(new Color(0, 162, 255));
+
+            JLabel withdrawn_Amount = new JLabel("Widthrawn Amount = $ " + withdrawnAmount);
+
+            amountPane.add(amountEntered);
+
+            amountPane.setBackground(new Color(0, 0, 0, 0));
+
+            withdrawn_Amount.setFont(new Font("Gill sans", Font.BOLD, 24));
+            withdrawn_Amount.setForeground(new Color(94,94,94,94));
+
+            withdrawnText.setFont(new Font("Gill sans", Font.BOLD, 24));
+            withdrawnText.setForeground(new Color(94,94,94,94));
+
+
+
+            GridBagConstraints gridBagConstraints = new GridBagConstraints();
+            gridBagConstraints.gridx = 0;
+            gridBagConstraints.gridy =0;
+            gridBagConstraints.anchor = GridBagConstraints.CENTER;
+            gridBagConstraints.insets = new Insets(10, 0,10,0);
+            gridBagConstraints.gridwidth =3;
+            withdrawnFrame.add(withdrawn_Amount, gridBagConstraints);
+
+
+            GridBagConstraints gridBagConstraints1 = new GridBagConstraints();
+            gridBagConstraints1.gridx = 0;
+            gridBagConstraints1.gridy =1;
+            gridBagConstraints1.anchor = GridBagConstraints.CENTER;
+            gridBagConstraints1.insets = new Insets(10, 0,10,0);
+            gridBagConstraints1.gridwidth =3;
+            withdrawnFrame.add(withdrawnText, gridBagConstraints1);
+
+            GridBagConstraints gridBagConstraints2 = new GridBagConstraints();
+            gridBagConstraints2.gridx = 0;
+            gridBagConstraints2.gridy =2;
+            gridBagConstraints2.ipadx = 270;
+            gridBagConstraints2.ipady = 60;
+            gridBagConstraints2.anchor = GridBagConstraints.CENTER;
+            gridBagConstraints2.insets = new Insets(10, 0,10,0);
+            gridBagConstraints2.gridwidth =3;
+            withdrawnFrame.add(amountPane, gridBagConstraints2);
+
+//            GridBagConstraints gridBagConstraints3 = new GridBagConstraints();
+//            gridBagConstraints3.gridx = 0;
+//            gridBagConstraints3.gridy =3;
+//            gridBagConstraints3.ipadx = 270;
+//            gridBagConstraints3.ipady = 60;
+//            gridBagConstraints3.anchor = GridBagConstraints.NORTHEAST;
+//            gridBagConstraints3.insets = new Insets(10, 0,10,0);
+//            gridBagConstraints3.gridwidth =3;
+//            withdrawnFrame.add(s_withdrawButton, gridBagConstraints3);
+
+            withdrawnFrame.setVisible(true);
 
         }
 
