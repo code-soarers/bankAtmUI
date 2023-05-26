@@ -191,6 +191,13 @@ public class BankUI {
 
                 saveButtonLink();}
         });
+
+        button3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                currentFrame();}
+        });
     }
 
     public void saveButtonLink() {
@@ -487,6 +494,60 @@ public class BankUI {
 
 
         }
+
+    JFrame currentFrame = new JFrame("Current account");
+    JLabel currentLabel = new JLabel("Total Amount in bank= " + account.accountBalance);
+    JLabel currentLabel2 = new JLabel("Enter Amount to Deposit");
+    JTextField currentText = new JTextField("");
+    JButton currentButton = new JButton("Deposit");
+
+    public void currentFrame() {
+        currentFrame.setSize(450, 450);
+        currentFrame.getContentPane().setBackground(new Color(0, 162, 255));
+        currentFrame.setLocationRelativeTo(null);
+        currentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        currentFrame.setLayout(new GridBagLayout());
+
+        currentLabel.setFont(new Font("Gill sans", Font.BOLD, 24));
+        currentLabel.setForeground(Color.white);
+
+        currentLabel2.setFont(new Font("Gill sans", Font.BOLD, 24));
+        currentLabel2.setForeground(new Color(94, 94, 94));
+
+        // Create a panel for the labels and set a BoxLayout with top alignment
+        JPanel currentLabelPanel = new JPanel();
+        currentLabelPanel.setBackground(new Color(0,162,255));
+        currentLabelPanel.setLayout(new BoxLayout(currentLabelPanel, BoxLayout.Y_AXIS));
+        currentLabelPanel.add(Box.createVerticalGlue());
+        currentLabelPanel.add(currentLabel);
+        currentLabelPanel.add(currentLabel2);
+
+        // Add the label panel and button panel to the frame using GridBagLayout
+        GridBagConstraints gridBagConstraints = new GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = GridBagConstraints.CENTER;
+        gridBagConstraints.insets = new Insets(10, 0, 10, 0);
+        currentFrame.add(currentLabelPanel, gridBagConstraints);
+
+        GridBagConstraints gridBagConstraints2 = new GridBagConstraints();
+        gridBagConstraints2.gridx = 0;
+        gridBagConstraints2.gridy = 1;
+        gridBagConstraints2.ipadx = 270;
+        gridBagConstraints2.ipady = 30;
+        gridBagConstraints2.anchor = GridBagConstraints.CENTER;
+        gridBagConstraints2.insets = new Insets(10, 0, 10, 0);
+        currentFrame.add(currentText, gridBagConstraints2);
+
+
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipadx = 80;
+        gridBagConstraints.ipady = 30;
+        gridBagConstraints.insets = new Insets(10, 5, 15, 0);
+        currentFrame.add(currentButton, gridBagConstraints);
+
+        currentFrame.setVisible(true);
+    }
 
 
 
