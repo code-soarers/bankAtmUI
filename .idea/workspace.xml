@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e87be7cf-138b-4766-95c1-f2245c1bb73c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/BankUI/BankUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/BankUI.java" afterDir="false" />
-    </list>
+    <list default="true" id="e87be7cf-138b-4766-95c1-f2245c1bb73c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,6 +40,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -56,7 +55,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684674881562</updated>
-      <workItem from="1685092587511" duration="611000" />
+      <workItem from="1685092587511" duration="1109000" />
     </task>
     <servers />
   </component>
