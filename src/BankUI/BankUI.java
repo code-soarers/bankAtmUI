@@ -1058,6 +1058,7 @@ public class BankUI {
         accountFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         accountFrame.setLayout(new GridBagLayout());
 
+        JLabel text = new JLabel("Would you like perform an action ");
         balanceLabel.setFont(new Font("Gill sans", Font.BOLD, 24));
         balanceLabel.setForeground(new Color(94, 94, 94));
         withdrawlabel.setFont(new Font("Gill sans", Font.BOLD, 18));
@@ -1104,6 +1105,19 @@ public class BankUI {
 
         buttonPanel2.setBackground(new Color(0, 162, 255));
 
+        JButton yesButton = new JButton("Yes");
+        JButton noButton = new JButton("No");
+        buttonPanel2.add(yesButton);
+        buttonPanel2.add(noButton);
+
+        GridBagConstraints gbc5 = new GridBagConstraints();
+        gbc5.gridx = 0;
+        gbc5.gridy = 3;
+        gbc5.insets = new Insets(10, 0, 10, 0);
+        gbc5.anchor = GridBagConstraints.CENTER;
+
+        currentFrame2.add(text, gbc5);
+
 
 
         GridBagConstraints gbc4 = new GridBagConstraints();
@@ -1112,9 +1126,9 @@ public class BankUI {
         gbc4.insets = new Insets(10, 0, 10, 0);
         gbc4.anchor = GridBagConstraints.CENTER;
 
-        accountFrame.add(buttonPanel2, gbc4);
+        currentFrame2.add(buttonPanel2, gbc4);
 
-        accountFrame.setVisible(true);
+        currentFrame2.setVisible(true);
     }
 
 
