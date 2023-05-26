@@ -980,7 +980,7 @@ public class BankUI {
     JTextField currentText2 = new JTextField("");
     JButton currentButton2 = new JButton("Deposit");
 
-    public void currentFrame() {
+    public void currentFrame2() {
         currentFrame2.setSize(450, 450);
         currentFrame2.getContentPane().setBackground(new Color(0, 162, 255));
         currentFrame2.setLocationRelativeTo(null);
@@ -1025,8 +1025,96 @@ public class BankUI {
         gridBagConstraints.insets = new Insets(10, 5, 15, 0);
         currentFrame2.add(currentButton2, gridBagConstraints);
 
-
+        currentButton2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String depositAmountString = depositField.getText();
+                int depositAmount2 = Integer.parseInt(depositAmountString);
+                handleDeposit(depositAmount2);
+            }
+        });
         currentFrame.setVisible(true);
+    }
+    public void handleDeposit(int depositAmount) {
+        Account account = new Account();
+        boolean deposited = account.deposit(depositAmount);
+
+        if (deposited) {
+
+            int updatedBalance2 = account.checkBalance();
+            showAccountFrame2(updatedBalance2,depositAmount);
+        }
+    }
+
+    public void showAccountFrame2(int balance,int depositAmount) {
+        JPanel panel = new JPanel();
+        JFrame accountFrame = new JFrame(  "Account Balance");
+        JLabel withdrawlabel = new JLabel("$"+ depositAmount+" deposited");
+        JLabel balance2 = new JLabel("$"+ balance);
+        JLabel balanceLabel = new JLabel("New Account Balance:");
+        accountFrame.setSize(300, 400);
+        accountFrame.getContentPane().setBackground(new Color(0, 162, 255));
+        accountFrame.setLocationRelativeTo(null);
+        accountFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        accountFrame.setLayout(new GridBagLayout());
+
+        balanceLabel.setFont(new Font("Gill sans", Font.BOLD, 24));
+        balanceLabel.setForeground(new Color(94, 94, 94));
+        withdrawlabel.setFont(new Font("Gill sans", Font.BOLD, 18));
+        withdrawlabel.setForeground(Color.GREEN);
+
+
+        balance2.setFont(new Font("Gill sans", Font.BOLD, 20));
+        balance2.setForeground(new Color(94, 94, 94));
+
+        panel.add(balance2) ;
+       GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(10, 0, 10, 0);
+        gbc.anchor = GridBagConstraints.CENTER;
+
+        accountFrame.add(withdrawlabel, gbc);
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 30, 10));
+
+        buttonPanel.setBackground(new Color(0, 162, 255));
+        GridBagConstraints gbc3 = new GridBagConstraints();
+        gbc3.gridx = 0;
+        gbc3.gridy = 1;
+        gbc3.insets = new Insets(10, 0, 10, 0);
+        gbc3.anchor = GridBagConstraints.CENTER;
+
+        accountFrame.add(balanceLabel, gbc3);
+
+        GridBagConstraints gbc2 = new GridBagConstraints();
+
+        gbc2.gridx = 0;
+        gbc2.gridy = 2;
+        gbc2.ipadx = 50;
+        gbc2.ipady = 10;
+        gbc2.insets = new Insets(10, 0, 10, 0);
+        gbc2.anchor = GridBagConstraints.CENTER;
+
+        accountFrame.add(panel, gbc2);
+
+        JPanel buttonPanel2 = new JPanel();
+        buttonPanel2.setLayout(new FlowLayout(FlowLayout.CENTER, 30, 10));
+
+
+        buttonPanel2.setBackground(new Color(0, 162, 255));
+
+
+
+        GridBagConstraints gbc4 = new GridBagConstraints();
+        gbc4.gridx = 0;
+        gbc4.gridy = 4;
+        gbc4.insets = new Insets(10, 0, 10, 0);
+        gbc4.anchor = GridBagConstraints.CENTER;
+
+        accountFrame.add(buttonPanel2, gbc4);
+
+        accountFrame.setVisible(true);
     }
 
 
