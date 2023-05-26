@@ -808,7 +808,13 @@ public class BankUI {
         accountFrame.add(buttonPanel, gbc4);
 
 
-
+        yesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                accountFrame.dispose();  // Close the account frame
+                mainUI2();  // Open the BANK HOMEPAGE frame
+            }
+        });
 
 
         accountFrame.setVisible(true);
