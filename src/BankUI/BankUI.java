@@ -816,11 +816,39 @@ public class BankUI {
             }
         });
 
-
+        noButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                accountFrame.dispose();  // Close the account frame
+                showExitFrame();  // Open the "Thank you" frame
+            }
+        });
         accountFrame.setVisible(true);
     }
 
+    public void showExitFrame() {
+        JFrame exitFrame = new JFrame("Thank You");
+        JLabel exitLabel = new JLabel("Thank you for using our platform.");
 
+        exitFrame.setSize(400, 200);
+        exitFrame.getContentPane().setBackground(new Color(0, 162, 255));
+        exitFrame.setLocationRelativeTo(null);
+        exitFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        exitFrame.setLayout(new GridBagLayout());
+
+        exitLabel.setFont(new Font("Gill sans", Font.BOLD, 24));
+        exitLabel.setForeground(new Color(94, 94, 94));
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(10, 20, 10, 20);
+        gbc.anchor = GridBagConstraints.CENTER;
+
+        exitFrame.add(exitLabel, gbc);
+
+        exitFrame.setVisible(true);
+    }
     JFrame depositFrame = new JFrame("Widthrawn");
 
     JLabel depositText = new JLabel("New Account Balance:");
