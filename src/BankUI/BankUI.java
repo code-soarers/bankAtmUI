@@ -289,7 +289,7 @@ public class BankUI {
         saveDepositButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                showDepositFrame();
+                depositFrame();
             }
         });
     }
@@ -357,19 +357,19 @@ public class BankUI {
             s_withdrawButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    String withdrawnString = s_withdrawField.getText();
-                    int withdrawnAmount = Integer.parseInt(withdrawnString);
-                    handleWithdraw(withdrawnAmount);
+                    String depositString = s_withdrawField.getText();
+                    int depositAmount2 = Integer.parseInt(depositString);
+                    handleWithdraw(depositAmount2);
                 }
             });
 
         }
-        public void handleWithdraw(int withdrawnAmount){
+        public void handleWithdraw(int depositAmount2){
             SavingsAccount account_s = new SavingsAccount();
-            boolean withdrawn = account_s.saving_withdrawal(withdrawnAmount);
+            boolean withdrawn = account_s.saving_withdrawal(depositAmount);
             if (withdrawn) {
                 int updateWithdraw = account_s.checkBalance();
-                withdrawframe(updateWithdraw, withdrawnAmount);
+                withdrawframe(updateWithdraw, depositAmount2);
             }
         }
 
@@ -552,14 +552,106 @@ public class BankUI {
         gridBagConstraints.insets = new Insets(10, 5, 15, 0);
         currentFrame.add(currentButton, gridBagConstraints);
 
+        s_withdrawButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String withdrawnString = s_withdrawField.getText();
+                int withdrawnAmount = Integer.parseInt(withdrawnString);
+                handleWithdraw(withdrawnAmount);
+            }
+        });
         currentFrame.setVisible(true);
+    }
+    public void handleWithdraw(int depositAmount){
+        Account account_c = new Account();
+        boolean withdrawn = account_c.withdrawal(depositAmount);
+        if (withdrawn) {
+            int updateWithdraw = account_c.checkBalance();
+            depositframe(updateWithdraw, depositAmount);
+        }
     }
 
 
 
 
+    JFrame depositFrame = new JFrame("Widthrawn");
 
-    JFrame depositFrame = new JFrame("Deposit");
+    JLabel depositText = new JLabel("New Account Balance:");
+    JLabel amountEntered2 = new JLabel(""+ account.accountBalance);
+    JPanel amountPane2 = new JPanel();
+
+    JLabel withdrawOptionTxt2 = new JLabel("Would you like to do Something else ?");
+
+
+
+    public void depositframe(int updateWithdraw, int depositAmount) {
+        depositFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        depositFrame.setLayout(new GridBagLayout());
+        depositFrame.setSize(1000, 500);
+        depositFrame.setLocationRelativeTo(null);
+        depositFrame.getContentPane().setBackground(new Color(0, 162, 255));
+
+        JLabel deposit_Amount = new JLabel("Widthrawn Amount = $ " + depositAmount);
+
+        amountPane.add(amountEntered);
+
+        amountPane.setBackground(new Color(0, 0, 0, 0));
+
+        deposit_Amount.setFont(new Font("Gill sans", Font.BOLD, 24));
+        deposit_Amount.setForeground(new Color(94, 94, 94, 94));
+
+        depositText.setFont(new Font("Gill sans", Font.BOLD, 24));
+        depositText.setForeground(new Color(94, 94, 94, 94));
+
+        withdrawOptionTxt2.setFont(new Font("Gill sans", Font.BOLD, 24));
+        withdrawOptionTxt2.setForeground(new Color(94, 94, 94, 94));
+
+
+        GridBagConstraints gridBagConstraints = new GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = GridBagConstraints.CENTER;
+        gridBagConstraints.insets = new Insets(10, 0, 10, 0);
+        gridBagConstraints.gridwidth = 3;
+        withdrawnFrame.add(deposit_Amount, gridBagConstraints);
+
+
+        GridBagConstraints gridBagConstraints1 = new GridBagConstraints();
+        gridBagConstraints1.gridx = 0;
+        gridBagConstraints1.gridy = 1;
+        gridBagConstraints1.anchor = GridBagConstraints.CENTER;
+        gridBagConstraints1.insets = new Insets(10, 0, 10, 0);
+        gridBagConstraints1.gridwidth = 3;
+        withdrawnFrame.add(depositText, gridBagConstraints1);
+
+        GridBagConstraints gridBagConstraints2 = new GridBagConstraints();
+        gridBagConstraints2.gridx = 0;
+        gridBagConstraints2.gridy = 2;
+        gridBagConstraints2.ipadx = 270;
+        gridBagConstraints2.ipady = 60;
+        gridBagConstraints2.anchor = GridBagConstraints.CENTER;
+        gridBagConstraints2.insets = new Insets(10, 0, 10, 0);
+        gridBagConstraints2.gridwidth = 3;
+        withdrawnFrame.add(amountPane2, gridBagConstraints2);
+
+        GridBagConstraints gridBagConstraints3 = new GridBagConstraints();
+        gridBagConstraints3.gridx = 0;
+        gridBagConstraints3.gridy = 3;
+        gridBagConstraints3.ipadx = 270;
+        gridBagConstraints3.ipady = 60;
+        gridBagConstraints3.anchor = GridBagConstraints.CENTER;
+        gridBagConstraints3.insets = new Insets(10, 40, 10, 0);
+        gridBagConstraints3.gridwidth = 3;
+        withdrawnFrame.add(withdrawOptionTxt2, gridBagConstraints3);
+
+        withdrawnFrame.setVisible(true);
+
+
+    }
+
+
+
+        JFrame depositFrame = new JFrame("Deposit");
     JLabel depositLabel = new JLabel("Enter the amount to deposit:");
     JTextField depositField = new JTextField();
     JButton depositButton = new JButton("Deposit");
@@ -604,11 +696,109 @@ public class BankUI {
         gbc.anchor = GridBagConstraints.CENTER;
         depositFrame.add(depositButton, gbc);
 
-
+        depositButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String withdrawnString = depositField.getText();
+                int depositAmount3 = Integer.parseInt(withdrawnString);
+                handleWithdraw(depositAmount3);
+            }
+        });
 
         depositFrame.setVisible(true);
+    }
+    public void handleWithdraw(int depositAmount3){
+        SavingsAccount account_s = new SavingsAccount();
+        boolean withdrawn = account_s.saving_withdrawal(depositAmount3);
+        if (withdrawn) {
+            int updateWithdraw = account_s.checkBalance();
+            withdrawframe(updateWithdraw, depositAmount3);
+        }
     }
 
 
 
-}
+
+    JFrame depositFrame = new JFrame("Widthrawn");
+
+    JLabel depositText = new JLabel("New Account Balance:");
+    JLabel amountEntered = new JLabel(""+ account.accountBalance);
+    JPanel amountPane = new JPanel();
+
+
+
+
+    public void depositframe(int updateWithdraw, int withdrawnAmount){
+        withdrawnFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        withdrawnFrame.setLayout( new GridBagLayout());
+        withdrawnFrame.setSize(1000, 500);
+        withdrawnFrame.setLocationRelativeTo(null);
+        withdrawnFrame.getContentPane().setBackground(new Color(0, 162, 255));
+
+        JLabel withdrawn_Amount = new JLabel("Widthrawn Amount = $ " + withdrawnAmount);
+
+        amountPane.add(amountEntered);
+
+        amountPane.setBackground(new Color(0, 0, 0, 0));
+
+        withdrawn_Amount.setFont(new Font("Gill sans", Font.BOLD, 24));
+        withdrawn_Amount.setForeground(new Color(94,94,94,94));
+
+        withdrawnText.setFont(new Font("Gill sans", Font.BOLD, 24));
+        withdrawnText.setForeground(new Color(94,94,94,94));
+
+        withdrawOptionTxt.setFont(new Font("Gill sans", Font.BOLD, 24));
+        withdrawOptionTxt.setForeground(new Color(94,94,94,94));
+
+
+
+        GridBagConstraints gridBagConstraints = new GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy =0;
+        gridBagConstraints.anchor = GridBagConstraints.CENTER;
+        gridBagConstraints.insets = new Insets(10, 0,10,0);
+        gridBagConstraints.gridwidth =3;
+        withdrawnFrame.add(withdrawn_Amount, gridBagConstraints);
+
+
+        GridBagConstraints gridBagConstraints1 = new GridBagConstraints();
+        gridBagConstraints1.gridx = 0;
+        gridBagConstraints1.gridy =1;
+        gridBagConstraints1.anchor = GridBagConstraints.CENTER;
+        gridBagConstraints1.insets = new Insets(10, 0,10,0);
+        gridBagConstraints1.gridwidth =3;
+        withdrawnFrame.add(withdrawnText, gridBagConstraints1);
+
+        GridBagConstraints gridBagConstraints2 = new GridBagConstraints();
+        gridBagConstraints2.gridx = 0;
+        gridBagConstraints2.gridy =2;
+        gridBagConstraints2.ipadx = 270;
+        gridBagConstraints2.ipady = 60;
+        gridBagConstraints2.anchor = GridBagConstraints.CENTER;
+        gridBagConstraints2.insets = new Insets(10, 0,10,0);
+        gridBagConstraints2.gridwidth =3;
+        withdrawnFrame.add(amountPane, gridBagConstraints2);
+
+        GridBagConstraints gridBagConstraints3 = new GridBagConstraints();
+        gridBagConstraints3.gridx = 0;
+        gridBagConstraints3.gridy =3;
+        gridBagConstraints3.ipadx = 270;
+        gridBagConstraints3.ipady = 60;
+        gridBagConstraints3.anchor = GridBagConstraints.CENTER;
+        gridBagConstraints3.insets = new Insets(10, 40,10,0);
+        gridBagConstraints3.gridwidth =3;
+        withdrawnFrame.add(withdrawOptionTxt, gridBagConstraints3);
+
+
+        withdrawnFrame.setVisible(true);
+
+
+
+
+
+
+    }
+
+
+
+}}
