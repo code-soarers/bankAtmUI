@@ -1128,6 +1128,13 @@ public class BankUI {
 
         currentFrame2.add(buttonPanel2, gbc4);
 
+        yesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentFrame2.dispose();  // Close the account frame
+                mainUI2();  // Open the BANK HOMEPAGE frame
+            }
+        });
         currentFrame2.setVisible(true);
     }
 
