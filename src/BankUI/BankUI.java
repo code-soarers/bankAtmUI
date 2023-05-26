@@ -359,6 +359,9 @@ public class BankUI {
                 public void actionPerformed(ActionEvent e) {
                     String depositString = s_withdrawField.getText();
                     int depositAmount2 = Integer.parseInt(depositString);
+                    FileWrite file2=new FileWrite();
+                    String input="Amount Withdrawn= "+depositAmount2;
+                    file2.fileWrite(input);
                     handleWithdraw1(depositAmount2);
                 }
             });
@@ -367,9 +370,7 @@ public class BankUI {
         public void handleWithdraw1(int depositAmount2){
             SavingsAccount account_s = new SavingsAccount();
             boolean withdrawn = account_s.saving_withdrawal(depositAmount2);
-            FileWrite file2=new FileWrite();
-            String input="Amount Withdrawn= "+withdrawn;
-            file2.fileWrite(input);
+
             if (withdrawn) {
                 int updateWithdraw = account_s.checkBalance();
                 withdrawframe(updateWithdraw, depositAmount2);
@@ -663,6 +664,9 @@ public class BankUI {
             public void actionPerformed(ActionEvent e) {
                 String withdrawnString = currentText.getText();
                 int withdrawnAmount = Integer.parseInt(withdrawnString);
+                FileWrite file2=new FileWrite();
+                String input="Amount Withdrawn= "+withdrawnAmount;
+                file2.fileWrite(input);
                 handleWithdraw(withdrawnAmount);
             }
         });
@@ -671,9 +675,7 @@ public class BankUI {
     public void handleWithdraw(int depositAmount){
         Account account_c = new Account();
         boolean withdrawn = account_c.withdrawal(depositAmount);
-        FileWrite file2=new FileWrite();
-        String input="Amount Withdrawn= "+withdrawn;
-        file2.fileWrite(input);
+
         if (withdrawn) {
             int updatedWithdraw = account_c.checkBalance();
             depositedframe(updatedWithdraw, depositAmount);
@@ -740,6 +742,9 @@ public class BankUI {
             public void actionPerformed(ActionEvent e) {
                 String depositAmountString = depositField.getText();
                 int depositAmount = Integer.parseInt(depositAmountString);
+                FileWrite file2=new FileWrite();
+                String input="Amount deposited= "+depositAmount;
+                file2.fileWrite(input);
                 handleDeposit2(depositAmount);
             }
         });
@@ -749,9 +754,7 @@ public class BankUI {
     public void handleDeposit2(int depositAmount) {
         Account account = new Account();
         boolean deposited = account.deposit(depositAmount);
-        FileWrite file2=new FileWrite();
-        String input="Amount deposited= "+deposited;
-        file2.fileWrite(input);
+
 
         if (deposited) {
 
