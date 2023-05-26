@@ -289,7 +289,7 @@ public class BankUI {
         saveDepositButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                depositFrame();
+                showDepositFrame();
             }
         });
     }
@@ -652,7 +652,7 @@ public class BankUI {
 
 
 
-        JFrame depositFrame = new JFrame("Deposit");
+        JFrame depositFrame2 = new JFrame("Deposit");
     JLabel depositLabel = new JLabel("Enter the amount to deposit:");
     JTextField depositField = new JTextField();
     JButton depositButton = new JButton("Deposit");
@@ -660,11 +660,11 @@ public class BankUI {
 
     public void showDepositFrame() {
         // Deposit Frame UI
-        depositFrame.setSize(350, 450);
-        depositFrame.getContentPane().setBackground(new Color(0, 162, 255));
-        depositFrame.setLocationRelativeTo(null);
-        depositFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        depositFrame.setLayout(new GridBagLayout());
+        depositFrame2.setSize(350, 450);
+        depositFrame2.getContentPane().setBackground(new Color(0, 162, 255));
+        depositFrame2.setLocationRelativeTo(null);
+        depositFrame2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        depositFrame2.setLayout(new GridBagLayout());
 
         depositLabel.setFont(new Font("Gill sans", Font.BOLD, 24));
         depositLabel.setForeground(new Color(94, 94, 94));
@@ -682,12 +682,12 @@ public class BankUI {
         gbc.ipady = 30;
 
 
-        depositFrame.add(depositLabel, gbc);
+        depositFrame2.add(depositLabel, gbc);
 
         gbc.gridy = 1;
         gbc.insets = new Insets(0, 0, 20, 0);
         gbc.anchor = GridBagConstraints.CENTER;
-        depositFrame.add(depositField, gbc);
+        depositFrame2.add(depositField, gbc);
 
 
         gbc.gridy = 2;
@@ -695,29 +695,112 @@ public class BankUI {
         gbc.ipadx = 60;
         gbc.ipady = 25;
         gbc.anchor = GridBagConstraints.CENTER;
-        depositFrame.add(depositButton, gbc);
+        depositFrame2.add(depositButton, gbc);
 
+//        depositButton.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                String withdrawnString = depositField.getText();
+//                int depositAmount3 = Integer.parseInt(withdrawnString);
+//                handleWithdraw(depositAmount3);
+//            }
+//        });
         depositButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String withdrawnString = depositField.getText();
-                int depositAmount3 = Integer.parseInt(withdrawnString);
-                handleWithdraw(depositAmount3);
+                String depositAmountString = depositField.getText();
+                int depositAmount = Integer.parseInt(depositAmountString);
+                handleDeposit(depositAmount);
             }
         });
 
-        depositFrame.setVisible(true);
+        depositFrame2.setVisible(true);
     }
-    public void handleWithdraw(int depositAmount3){
-        SavingsAccount account_s = new SavingsAccount();
-        boolean withdrawn = account_s.saving_withdrawal(depositAmount3);
-        if (withdrawn) {
-            int updateWithdraw = account_s.checkBalance();
-            withdrawframe(updateWithdraw, depositAmount3);
+    public void handleDeposit(int depositAmount) {
+        Account account = new Account();
+        boolean deposited = account.deposit(depositAmount);
+
+        if (deposited) {
+
+            int updatedBalance = account.checkBalance();
+            showAccountFrame(updatedBalance,depositAmount);
         }
     }
 
+    public void showAccountFrame(int balance,int depositAmount) {
+        JPanel panel = new JPanel();
+        JFrame accountFrame = new JFrame(  "Account Balance");
+        JLabel withdrawlabel = new JLabel("$"+ depositAmount+" deposited");
+        JLabel balance2 = new JLabel("$"+ balance);
+        JLabel balanceLabel = new JLabel("New Account Balance:");
 
+        accountFrame.setSize(300, 400);
+        accountFrame.getContentPane().setBackground(new Color(0, 162, 255));
+        accountFrame.setLocationRelativeTo(null);
+        accountFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        accountFrame.setLayout(new GridBagLayout());
+
+        balanceLabel.setFont(new Font("Gill sans", Font.BOLD, 24));
+        balanceLabel.setForeground(new Color(94, 94, 94));
+
+        withdrawlabel.setFont(new Font("Gill sans", Font.BOLD, 18));
+        withdrawlabel.setForeground(Color.GREEN);
+
+
+        balance2.setFont(new Font("Gill sans", Font.BOLD, 20));
+        balance2.setForeground(new Color(94, 94, 94));
+
+        panel.add(balance2) ;
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(10, 0, 10, 0);
+        gbc.anchor = GridBagConstraints.CENTER;
+
+        accountFrame.add(withdrawlabel, gbc);
+
+        GridBagConstraints gbc3 = new GridBagConstraints();
+        gbc3.gridx = 0;
+        gbc3.gridy = 1;
+        gbc3.insets = new Insets(10, 0, 10, 0);
+        gbc3.anchor = GridBagConstraints.CENTER;
+
+        accountFrame.add(balanceLabel, gbc3);
+
+        GridBagConstraints gbc2 = new GridBagConstraints();
+
+        gbc2.gridx = 0;
+        gbc2.gridy = 2;
+        gbc2.ipadx = 50;
+        gbc2.ipady = 10;
+        gbc2.insets = new Insets(10, 0, 10, 0);
+        gbc2.anchor = GridBagConstraints.CENTER;
+
+        accountFrame.add(panel, gbc2);
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 30, 10));
+
+
+        buttonPanel.setBackground(new Color(0, 162, 255));
+
+
+
+        GridBagConstraints gbc4 = new GridBagConstraints();
+        gbc4.gridx = 0;
+        gbc4.gridy = 4;
+        gbc4.insets = new Insets(10, 0, 10, 0);
+        gbc4.anchor = GridBagConstraints.CENTER;
+
+        accountFrame.add(buttonPanel, gbc4);
+
+
+
+
+
+        accountFrame.setVisible(true);
+    }
 
 
     JFrame depositFrame = new JFrame("Widthrawn");
