@@ -812,6 +812,15 @@ public class BankUI {
         gridBagConstraints5.gridwidth =3;
         withdrawnFrame.add(withdrawNO, gridBagConstraints5);
 
+        withdrawYes.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame2.dispose();
+                mainUI2();
+
+
+            }
+        });
         withdrawnFrame.setVisible(true);
 
 
