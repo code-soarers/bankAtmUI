@@ -286,6 +286,12 @@ public class BankUI {
             @Override
             public void actionPerformed(ActionEvent e) {saveWithdraw();}
         });
+        saveDepositButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showDepositFrame();
+            }
+        });
     }
     public void destroy_saveOptionFrame(){
         saveOptionFrame.dispose();
@@ -553,6 +559,55 @@ public class BankUI {
 
 
 
+    JFrame depositFrame = new JFrame("Deposit");
+    JLabel depositLabel = new JLabel("Enter the amount to deposit:");
+    JTextField depositField = new JTextField();
+    JButton depositButton = new JButton("Deposit");
+
+
+    public void showDepositFrame() {
+        // Deposit Frame UI
+        depositFrame.setSize(350, 450);
+        depositFrame.getContentPane().setBackground(new Color(0, 162, 255));
+        depositFrame.setLocationRelativeTo(null);
+        depositFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        depositFrame.setLayout(new GridBagLayout());
+
+        depositLabel.setFont(new Font("Gill sans", Font.BOLD, 24));
+        depositLabel.setForeground(new Color(94, 94, 94));
+
+        depositButton.setFont(new Font("Gill sans", Font.BOLD, 24));
+        depositButton.setForeground(new Color(94, 94, 94));
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+
+        gbc.insets = new Insets(0, 10, 5, 10);
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.ipadx = 230;
+        gbc.ipady = 30;
+
+
+        depositFrame.add(depositLabel, gbc);
+
+        gbc.gridy = 1;
+        gbc.insets = new Insets(0, 0, 20, 0);
+        gbc.anchor = GridBagConstraints.CENTER;
+        depositFrame.add(depositField, gbc);
+
+
+        gbc.gridy = 2;
+        gbc.insets = new Insets(0, 0, 0, 0);
+        gbc.ipadx = 60;
+        gbc.ipady = 25;
+        gbc.anchor = GridBagConstraints.CENTER;
+        depositFrame.add(depositButton, gbc);
+
+
+
+        depositFrame.setVisible(true);
+    }
 
 
 
