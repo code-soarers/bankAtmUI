@@ -733,7 +733,7 @@ public class BankUI {
         JLabel withdrawlabel = new JLabel("$"+ depositAmount+" deposited");
         JLabel balance2 = new JLabel("$"+ balance);
         JLabel balanceLabel = new JLabel("New Account Balance:");
-
+        JLabel text = new JLabel("Would you like perform an action ");
         accountFrame.setSize(300, 400);
         accountFrame.getContentPane().setBackground(new Color(0, 162, 255));
         accountFrame.setLocationRelativeTo(null);
@@ -743,7 +743,7 @@ public class BankUI {
         balanceLabel.setFont(new Font("Gill sans", Font.BOLD, 24));
         balanceLabel.setForeground(new Color(94, 94, 94));
 
-        withdrawlabel.setFont(new Font("Gill sans", Font.BOLD, 18));
+        text.setFont(new Font("Gill sans", Font.BOLD, 16));        withdrawlabel.setFont(new Font("Gill sans", Font.BOLD, 18));
         withdrawlabel.setForeground(Color.GREEN);
 
 
@@ -751,15 +751,27 @@ public class BankUI {
         balance2.setForeground(new Color(94, 94, 94));
 
         panel.add(balance2) ;
+        GridBagConstraints gbc5 = new GridBagConstraints();
+        gbc5.gridx = 0;
+        gbc5.gridy = 3;
+        gbc5.insets = new Insets(10, 0, 10, 0);
+        gbc5.anchor = GridBagConstraints.CENTER;
 
-        GridBagConstraints gbc = new GridBagConstraints();
+        accountFrame.add(text, gbc5);        GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.insets = new Insets(10, 0, 10, 0);
         gbc.anchor = GridBagConstraints.CENTER;
 
         accountFrame.add(withdrawlabel, gbc);
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 30, 10));
+        JButton yesButton = new JButton("Yes");
+        JButton noButton = new JButton("No");
+        buttonPanel.add(yesButton);
+        buttonPanel.add(noButton);
 
+        buttonPanel.setBackground(new Color(0, 162, 255));
         GridBagConstraints gbc3 = new GridBagConstraints();
         gbc3.gridx = 0;
         gbc3.gridy = 1;
