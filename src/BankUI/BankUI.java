@@ -187,13 +187,16 @@ public class BankUI {
 
         button2.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {saveButtonLink();}
+            public void actionPerformed(ActionEvent e) {
+
+                saveButtonLink();}
         });
     }
 
     public void saveButtonLink() {
         saveAccountButton();
     }
+
 
 
 
@@ -455,7 +458,19 @@ public class BankUI {
 
             withdrawnFrame.setVisible(true);
 
+            withdrawYes.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    frame2.dispose();
+                    mainUI2();
+
+
+                }
+            });
+
+
         }
+
 
 
 
