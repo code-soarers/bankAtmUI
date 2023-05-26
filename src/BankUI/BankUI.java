@@ -581,7 +581,8 @@ public class BankUI {
     JPanel amountPane2 = new JPanel();
 
     JLabel withdrawOptionTxt2 = new JLabel("Would you like to do Something else ?");
-
+    JButton withdrawYes = new JButton("Yes");
+    JButton withdrawNO = new JButton("NO");
 
 
     public void depositframe(int updateWithdraw, int depositAmount) {
@@ -724,6 +725,7 @@ public class BankUI {
     JLabel depositText = new JLabel("New Account Balance:");
     JLabel amountEntered = new JLabel(""+ account.accountBalance);
     JPanel amountPane = new JPanel();
+    JLabel withdrawOptionTxt2 = new JLabel("Would you like to do Something else ?");
 
 
 
@@ -787,8 +789,28 @@ public class BankUI {
         gridBagConstraints3.anchor = GridBagConstraints.CENTER;
         gridBagConstraints3.insets = new Insets(10, 40,10,0);
         gridBagConstraints3.gridwidth =3;
-        withdrawnFrame.add(withdrawOptionTxt, gridBagConstraints3);
+        withdrawnFrame.add(withdrawOptionTxt2, gridBagConstraints3);
 
+
+        GridBagConstraints gridBagConstraints4 = new GridBagConstraints();
+        gridBagConstraints4.gridx = 0;
+        gridBagConstraints4.gridy =4;
+        gridBagConstraints4.ipadx = 170;
+        gridBagConstraints4.ipady = 60;
+        gridBagConstraints4.anchor = GridBagConstraints.NORTHWEST;
+        gridBagConstraints4.insets = new Insets(10, 10,10,10);
+        gridBagConstraints4.gridwidth =3;
+        withdrawnFrame.add(withdrawYes, gridBagConstraints4);
+
+        GridBagConstraints gridBagConstraints5 = new GridBagConstraints();
+        gridBagConstraints5.gridx = 1;
+        gridBagConstraints5.gridy =4;
+        gridBagConstraints5.ipadx = 170;
+        gridBagConstraints5.ipady = 60;
+        gridBagConstraints5.anchor = GridBagConstraints.NORTHEAST;
+        gridBagConstraints5.insets = new Insets(10, 10,10,10);
+        gridBagConstraints5.gridwidth =3;
+        withdrawnFrame.add(withdrawNO, gridBagConstraints5);
 
         withdrawnFrame.setVisible(true);
 
