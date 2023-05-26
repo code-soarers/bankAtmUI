@@ -1135,6 +1135,22 @@ public class BankUI {
                 mainUI2();  // Open the BANK HOMEPAGE frame
             }
         });
+
+        noButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                withdrawnFrame.dispose();
+                frame.dispose();
+                frame2.dispose();
+                s_withdrawFrame.dispose();
+                saveOptionFrame.dispose();
+                currentFrame2.dispose();
+                accountFrame.dispose();
+
+                JOptionPane.showMessageDialog(null, "thank you for using our Bank");
+
+            }
+        });
         currentFrame2.setVisible(true);
     }
 
